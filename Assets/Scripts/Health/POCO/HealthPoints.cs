@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace Health.POCO
 {
 	[Serializable]
 	public class HealthPoints

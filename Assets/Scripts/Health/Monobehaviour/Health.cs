@@ -1,20 +1,23 @@
-﻿using DefaultNamespace;
+﻿using Health.POCO;
 using UnityEngine;
 
-public class Health : MonoBehaviour, IDamageable
+namespace Health.MonoBehaviour
 {
-	[SerializeField] private int maxHealth = 100;
-	[SerializeField] private int initialHealth = 100;
-
-	public HealthPoints healthPoints;
-
-	private void Awake()
+	public class Health : UnityEngine.MonoBehaviour, IDamageable
 	{
-		healthPoints = new HealthPoints(maxHealth, initialHealth);
-	}
+		[SerializeField] private int maxHealth = 100;
+		[SerializeField] private int initialHealth = 100;
 
-	public void DealDamage(int value)
-	{
-		healthPoints.DealDamage(value);
+		public HealthPoints healthPoints;
+
+		private void Awake()
+		{
+			healthPoints = new HealthPoints(maxHealth, initialHealth);
+		}
+
+		public void DealDamage(int value)
+		{
+			healthPoints.DealDamage(value);
+		}
 	}
 }

@@ -1,53 +1,56 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageDealer : MonoBehaviour
+namespace Health.MonoBehaviour
 {
-	class DamageableCollidedEntry
+	public class DamageDealer : UnityEngine.MonoBehaviour
 	{
-		public IDamageable Damageable;
-		public float TimeLeft;
-
-		public DamageableCollidedEntry(IDamageable damageable, float time)
+		private class DamageableCollidedEntry
 		{
-			Damageable = damageable;
-			TimeLeft = time;
-		}
-	}
+			public IDamageable Damageable;
+			public float TimeLeft;
 
-	[SerializeField] private int damageValue = 5;
-	[SerializeField] private float damageDealFrequency = 0.5f;
-
-	private IList<DamageableCollidedEntry> damageableCollided = new List<DamageableCollidedEntry>();
-
-	private void Update()
-	{
-		for (int i = damageableCollided.Count - 1; i >= 0; i--)
-		{
-			var entry = damageableCollided[i];
-			entry.TimeLeft -= Time.deltaTime;
-			if (entry.TimeLeft <= 0)
-				damageableCollided.RemoveAt(i);
-		}
-	}
-
-	private void OnTriggerStay(Collider other)
-	{
-		if (!other.TryGetComponent(out IDamageable damageable) || AlreadyCollided(damageable))
-			return;
-
-		damageable.DealDamage(damageValue);
-		damageableCollided.Add(new DamageableCollidedEntry(damageable, damageDealFrequency));
-	}
-
-	private bool AlreadyCollided(IDamageable damageable)
-	{
-		for (int i = 0; i < damageableCollided.Count; i++)
-		{
-			if (damageableCollided[i].Damageable == damageable)
-				return true;
+			public DamageableCollidedEntry(IDamageable damageable, float time)
+			{
+				Damageable = damageable;
+				TimeLeft = time;
+			}
 		}
 
-		return false;
+		[SerializeField] private int damageValue = 5;
+		[SerializeField] private float damageDealFrequency = 0.5f;
+
+		private IList<DamageableCollidedEntry> damageableCollided = new List<DamageableCollidedEntry>();
+
+		private void Update()
+		{
+			for (int i = damageableCollided.Count - 1; i >= 0; i--)
+			{
+				var entry = damageableCollided[i];
+				entry.TimeLeft -= Time.deltaTime;
+				if (entry.TimeLeft <= 0)
+					damageableCollided.RemoveAt(i);
+			}
+		}
+
+		private void OnTriggerStay(Collider other)
+		{
+			if (!other.TryGetComponent(out IDamageable damageable) || AlreadyCollided(damageable))
+				return;
+
+			damageable.DealDamage(damageValue);
+			damageableCollided.Add(new DamageableCollidedEntry(damageable, damageDealFrequency));
+		}
+
+		private bool AlreadyCollided(IDamageable damageable)
+		{
+			for (int i = 0; i < damageableCollided.Count; i++)
+			{
+				if (damageableCollided[i].Damageable == damageable)
+					return true;
+			}
+
+			return false;
+		}
 	}
 }

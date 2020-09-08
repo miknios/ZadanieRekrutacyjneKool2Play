@@ -1,4 +1,7 @@
-﻿public interface IDamageable
+﻿namespace Health.MonoBehaviour
 {
-	void DealDamage(int value);
+	public interface IDamageable
+	{
+		void DealDamage(int value);
+	}
 }
