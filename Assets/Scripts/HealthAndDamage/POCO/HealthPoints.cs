@@ -1,7 +1,6 @@
 ﻿using System;
-using UnityEngine;
 
-namespace Health.POCO
+namespace HealthAndDamage.POCO
 {
 	[Serializable]
 	public class HealthPoints
@@ -9,6 +8,7 @@ namespace Health.POCO
 		private int _amount;
 		private int _max;
 
+		public event Action DamageDealt;
 		public event Action HealthDepleted;
 
 		public HealthPoints(int max)
@@ -24,7 +24,11 @@ namespace Health.POCO
 
 		public void DealDamage(int damage)
 		{
-			_amount = Mathf.Max(_amount - damage, 0);
+			if(_amount == 0)
+				return;
+			
+			_amount = Math.Max(_amount - damage, 0);
+			DamageDealt?.Invoke();
 			
 			if(_amount == 0)
 				HealthDepleted?.Invoke();
@@ -32,7 +36,7 @@ namespace Health.POCO
 
 		public void Restore(int restoreAmount)
 		{
-			_amount = Mathf.Min(_amount + restoreAmount, _max);
+			_amount = Math.Min(_amount + restoreAmount, _max);
 		}
 
 		public void ResetToMax()

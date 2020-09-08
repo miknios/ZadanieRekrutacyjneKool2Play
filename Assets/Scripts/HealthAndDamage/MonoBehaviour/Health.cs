@@ -1,18 +1,17 @@
-﻿using Health.POCO;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Health.MonoBehaviour
+namespace HealthAndDamage.MonoBehaviour
 {
 	public class Health : UnityEngine.MonoBehaviour, IDamageable
 	{
 		[SerializeField] private int maxHealth = 100;
 		[SerializeField] private int initialHealth = 100;
 
-		public HealthPoints healthPoints;
+		public POCO.HealthPoints healthPoints;
 
 		private void Awake()
 		{
-			healthPoints = new HealthPoints(maxHealth, initialHealth);
+			healthPoints = new POCO.HealthPoints(maxHealth, initialHealth);
 		}
 
 		public void DealDamage(int value)
