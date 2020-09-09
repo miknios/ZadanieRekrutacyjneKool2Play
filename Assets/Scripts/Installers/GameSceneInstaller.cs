@@ -1,4 +1,5 @@
-﻿using Enemy.TargetFollowing;
+﻿using DefaultNamespace;
+using Enemy.TargetFollowing;
 using Zenject;
 
 namespace Installers
@@ -8,6 +9,7 @@ namespace Installers
 		public override void InstallBindings()
 		{
 			Container.Bind<IEnemyTargetRegistry>().To<EnemyTargetRegistry>().AsSingle().NonLazy();
+			Container.BindInterfacesAndSelfTo<ScoreCounter>().AsSingle().NonLazy();
 		}
 	}
 }
