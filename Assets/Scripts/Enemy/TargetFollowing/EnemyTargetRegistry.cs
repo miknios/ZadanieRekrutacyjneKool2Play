@@ -1,11 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Enemy.TargetFollowing
 {
 	public interface IEnemyTargetRegistry
 	{
 		Vector3 GetClosestTargetTo(Vector3 position);
+		Vector3 GetRandomTarget();
 		void Register(Transform transform);
 		void Unregister(Transform transform);
 	}
@@ -33,6 +38,14 @@ namespace Enemy.TargetFollowing
 			}
 
 			return closestTargetPos;
+		}
+
+		public Vector3 GetRandomTarget()
+		{
+			int targetCount = _registeredTargets.Count;
+			int randomTargetIndex = Random.Range(0, targetCount - 1);
+			
+			return _registeredTargets[randomTargetIndex].position;
 		}
 
 		public void Register(Transform transform)
