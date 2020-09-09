@@ -23,6 +23,7 @@ namespace Enemy.TargetFollowing
 			Vector3 moveVectorNormalized = (targetPosition - position).normalized;
 			Vector3 moveVectorScaled = moveVectorNormalized * (speed * Time.deltaTime);
 		
+			_rigidbody.MoveRotation(Quaternion.LookRotation(moveVectorNormalized));
 			_rigidbody.MovePosition(position + moveVectorScaled);
 		}
 	}
