@@ -13,7 +13,7 @@ public class EnemySpawner : MonoBehaviour
 	[SerializeField] private float maxDistanceFromTarget = 15f;
 	
 	private IEnemyTargetRegistry _enemyTargetRegistry;
-	private PrefabPool enemyPrefabPool;
+	private PrefabPool _enemyPrefabPool;
 	
 	[Inject]
 	private void Initialize(IEnemyTargetRegistry enemyTargetRegistry)
@@ -25,24 +25,24 @@ public class EnemySpawner : MonoBehaviour
 
 	private void Start()
 	{
-		enemyPrefabPool = PrefabPoolUtils.PoolForPrefab(enemyPrefab);
+		_enemyPrefabPool = PrefabPoolUtils.PoolForPrefab(enemyPrefab);
 	}
 
 	private void SpawnEnemy()
 	{
 		Vector3 position = GetRandomPositionNearEnemyTarget();
-		enemyPrefabPool.Spawn(position, Quaternion.identity);
+		_enemyPrefabPool.Spawn(position, Quaternion.identity);
 		
 		Debug.Log("Spawning new enemy");
 	}
 
 	private Vector3 GetRandomPositionNearEnemyTarget()
 	{
-		var randomTargetPos = _enemyTargetRegistry.GetRandomTarget();
+		_enemyTargetRegistry.TryGetRandomTarget(out var randomTargetPosition);
 		Vector2 randomPointInCircle = Random.insideUnitCircle * maxDistanceFromTarget;
 
-		randomTargetPos.x += randomPointInCircle.x;
-		randomTargetPos.z += randomPointInCircle.y;
-		return randomTargetPos;
+		randomTargetPosition.x += randomPointInCircle.x;
+		randomTargetPosition.z += randomPointInCircle.y;
+		return randomTargetPosition;
 	}
 }

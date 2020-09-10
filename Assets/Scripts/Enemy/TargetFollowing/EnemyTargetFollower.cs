@@ -19,7 +19,9 @@ namespace Enemy.TargetFollowing
 		private void FixedUpdate()
 		{
 			Vector3 position = transform.position;
-			Vector3 targetPosition = _enemyTargetRegistry.GetClosestTargetTo(position);
+			if(!_enemyTargetRegistry.TryGetClosestTargetTo(position, out var targetPosition))
+				return;
+			
 			Vector3 moveVectorNormalized = (targetPosition - position).normalized;
 			Vector3 moveVectorScaled = moveVectorNormalized * (speed * Time.deltaTime);
 		

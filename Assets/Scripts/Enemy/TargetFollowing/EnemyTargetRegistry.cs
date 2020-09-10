@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,8 +6,8 @@ namespace Enemy.TargetFollowing
 {
 	public interface IEnemyTargetRegistry
 	{
-		Vector3 GetClosestTargetTo(Vector3 position);
-		Vector3 GetRandomTarget();
+		bool TryGetClosestTargetTo(Vector3 position, out Vector3 targetPosition);
+		bool TryGetRandomTarget(out Vector3 targetPosition);
 		void Register(Transform transform);
 		void Unregister(Transform transform);
 	}
@@ -19,10 +16,11 @@ namespace Enemy.TargetFollowing
 	{
 		private readonly IList<Transform> _registeredTargets = new List<Transform>();
 
-		public Vector3 GetClosestTargetTo(Vector3 position)
+		public bool TryGetClosestTargetTo(Vector3 position, out Vector3 targetPosition)
 		{
+			targetPosition = Vector3.zero;
 			if (_registeredTargets.Count == 0)
-				return position;
+				return false;
 			
 			Vector3 closestTargetPos = _registeredTargets[0].position;
 			float minDistance = Vector3.Distance(closestTargetPos, position);
@@ -37,15 +35,22 @@ namespace Enemy.TargetFollowing
 				}
 			}
 
-			return closestTargetPos;
+			targetPosition = closestTargetPos;
+			return true;
 		}
 
-		public Vector3 GetRandomTarget()
+		public bool TryGetRandomTarget(out Vector3 targetPosition)
 		{
-			int targetCount = _registeredTargets.Count;
-			int randomTargetIndex = Random.Range(0, targetCount - 1);
+			targetPosition = Vector3.zero;
 			
-			return _registeredTargets[randomTargetIndex].position;
+			int targetCount = _registeredTargets.Count;
+			if(targetCount == 0)
+				return false;
+			
+			int randomTargetIndex = Random.Range(0, targetCount - 1);
+			targetPosition = _registeredTargets[randomTargetIndex].position;
+			
+			return true;
 		}
 
 		public void Register(Transform transform)

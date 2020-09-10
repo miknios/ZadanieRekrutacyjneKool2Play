@@ -1,4 +1,5 @@
 ﻿using HealthAndDamage.MonoBehaviour;
+using UniRx;
 using UnityEngine;
 
 namespace HealthAndDamage.DeathBehaviours
@@ -15,7 +16,9 @@ namespace HealthAndDamage.DeathBehaviours
 
 		private void Start()
 		{
-			health.healthPoints.HealthDepleted += OnDeath;
+			health.healthPoints.Amount
+				.Where(amount => amount == 0)
+				.Subscribe(_ => OnDeath());
 		}
 
 		protected abstract void OnDeath();
