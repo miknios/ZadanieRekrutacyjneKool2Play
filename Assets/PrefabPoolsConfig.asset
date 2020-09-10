@@ -16,3 +16,6 @@ MonoBehaviour:
   - prefab: {fileID: 1761718293647316761, guid: 8aab592bdace27a478dd8bb50d50a687, type: 3}
     prewarm: 10
     poolIncreaseStep: 10
+  - prefab: {fileID: 3196500748870248693, guid: a0fa73a054f895743a1e07f13afa483e, type: 3}
+    prewarm: 30
+    poolIncreaseStep: 20

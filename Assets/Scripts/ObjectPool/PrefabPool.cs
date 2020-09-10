@@ -6,19 +6,19 @@ namespace ObjectPool
 {
 	public class PrefabPool
 	{
+		private readonly Transform _container;
 		private readonly IList<GameObject> _pool;
 		private readonly int _poolIncreaseStep;
 		private HashSet<GameObject> _spawned;
-		private PrefabPoolSceneManager _prefabPoolSceneManager;
 		public readonly GameObject Prefab;
 
-		public PrefabPool(GameObject prefab, int prewarm = 10, int poolIncreaseStep = 5)
+		public PrefabPool(GameObject prefab, Transform container = null, int prewarm = 10, int poolIncreaseStep = 5)
 		{
 			Prefab = prefab;
 			_poolIncreaseStep = Mathf.Max(0, poolIncreaseStep);
 			_pool = new List<GameObject>(prewarm);
 			_spawned = new HashSet<GameObject>();
-			_prefabPoolSceneManager = PrefabPoolSceneManager.Instance;
+			_container = container;
 
 			ExtendPoolBy(prewarm);
 		}
@@ -27,7 +27,7 @@ namespace ObjectPool
 		{
 			for (int i = 0; i < amount; i++)
 			{
-				GameObject instantiated = Object.Instantiate(Prefab, _prefabPoolSceneManager.transform);
+				GameObject instantiated = Object.Instantiate(Prefab, _container);
 				instantiated.SetActive(false);
 				_pool.Add(instantiated);
 			}
@@ -44,7 +44,7 @@ namespace ObjectPool
 			transform.rotation = rotation;
 			transform.SetParent(parent);
 			spawned.SetActive(true);
-			
+
 			_pool.RemoveAt(0);
 
 			return spawned;
@@ -52,12 +52,12 @@ namespace ObjectPool
 
 		public void Despawn(GameObject clone)
 		{
-			if(!_spawned.Contains(clone))
+			if (!_spawned.Contains(clone))
 				return;
 
 			_spawned.Remove(clone);
 			clone.SetActive(false);
-			clone.transform.SetParent(_prefabPoolSceneManager.transform);
+			clone.transform.SetParent(_container);
 			_pool.Add(clone);
 		}
 	}

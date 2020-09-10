@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
-	[SerializeField] private GameObject enemyPrefab;
+	[SerializeField] private GameObject enemyPrefab = null;
 	[SerializeField] private float spawnFrequency = 1f;
 	[SerializeField] private float maxDistanceFromTarget = 15f;
 	
