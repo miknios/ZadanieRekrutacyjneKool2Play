@@ -1,4 +1,5 @@
-﻿using ObjectPool;
+﻿using System;
+using ObjectPool;
 using UniRx;
 using UnityEngine;
 
@@ -16,9 +17,9 @@ namespace Shooting
 		{
 
 			// TODO: extract input for config
-			// TODO: include fire rate in observable construction
 			var inputStream = Observable.EveryUpdate()
-				.Where(_ => Input.GetMouseButtonDown(0));
+				.Where(_ => Input.GetMouseButtonDown(0))
+				.ThrottleFirst(TimeSpan.FromSeconds(fireRate));
 
 			inputStream.Subscribe(_ => ShootBullet());
 		}
