@@ -11,7 +11,7 @@ namespace Enemy.TargetFollowing
 		private IEnemyTargetRegistry _enemyTargetRegistry;
 
 		[Inject]
-		public void Initialize(IEnemyTargetRegistry enemyTargetRegistry)
+		public void ConstructWithInjection(IEnemyTargetRegistry enemyTargetRegistry)
 		{
 			_enemyTargetRegistry = enemyTargetRegistry;
 		}

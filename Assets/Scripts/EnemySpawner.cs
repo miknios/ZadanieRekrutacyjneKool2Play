@@ -32,8 +32,6 @@ public class EnemySpawner : MonoBehaviour
 	{
 		Vector3 position = GetRandomPositionNearEnemyTarget();
 		_enemyPrefabPool.Spawn(position, Quaternion.identity);
-		
-		Debug.Log("Spawning new enemy");
 	}
 
 	private Vector3 GetRandomPositionNearEnemyTarget()

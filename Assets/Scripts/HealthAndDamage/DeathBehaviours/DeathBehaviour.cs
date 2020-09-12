@@ -1,22 +1,22 @@
-﻿using HealthAndDamage.MonoBehaviour;
+﻿using HealthAndDamage.POCO;
 using UniRx;
 using UnityEngine;
 
 namespace HealthAndDamage.DeathBehaviours
 {
-	[RequireComponent(typeof(Health))]
-	public abstract class DeathBehaviour : UnityEngine.MonoBehaviour
+	[RequireComponent(typeof(HealthComponent))]
+	public abstract class DeathBehaviour : MonoBehaviour
 	{
-		protected Health health;
+		private IHealthData _healthData;
 
 		public void Awake()
 		{
-			health = GetComponent<Health>();
+			_healthData = GetComponent<IHealthData>();
 		}
 
 		private void Start()
 		{
-			health.healthPoints.Amount
+			_healthData.Current
 				.Where(amount => amount == 0)
 				.Subscribe(_ => OnDeath());
 		}

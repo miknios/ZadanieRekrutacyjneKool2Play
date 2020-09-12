@@ -1,4 +1,4 @@
-﻿using DefaultNamespace;
+﻿using Score;
 using Zenject;
 
 namespace HealthAndDamage.DeathBehaviours

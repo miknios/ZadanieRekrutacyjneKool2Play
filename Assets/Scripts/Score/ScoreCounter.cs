@@ -1,6 +1,6 @@
 ﻿using UniRx;
 
-namespace DefaultNamespace
+namespace Score
 {
 	public class ScoreCounter
 	{

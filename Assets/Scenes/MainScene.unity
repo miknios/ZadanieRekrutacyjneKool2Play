@@ -199,6 +199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 364384514}
   - component: {fileID: 364384516}
+  - component: {fileID: 364384517}
   - component: {fileID: 364384515}
   m_Layer: 5
   m_Name: HealthLabel
@@ -323,28 +324,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364384513}
   m_CullTransparentMesh: 0
---- !u!1 &465386727 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 162388520157436686, guid: 6b41877905688a9489a31272ca49cc5c, type: 3}
-  m_PrefabInstance: {fileID: 162388520234182633}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &465386728
+--- !u!114 &364384517
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 465386727}
+  m_GameObject: {fileID: 364384513}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c798da0e53d0f104e888392ef2d7c48c, type: 3}
+  m_Script: {fileID: 11500000, guid: 041cba43c862f1449b2855c23cc6ae48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &465386737 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 162388520157436677, guid: 6b41877905688a9489a31272ca49cc5c, type: 3}
+  healthLabel: {fileID: 364384515}
+--- !u!114 &465386732 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 162388520157436678, guid: 6b41877905688a9489a31272ca49cc5c, type: 3}
   m_PrefabInstance: {fileID: 162388520234182633}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8cd831cedf891f44a3f55474bfc4ef9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &527167715
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,52 +823,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1299448614
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1299448615}
-  - component: {fileID: 1299448616}
-  m_Layer: 9
-  m_Name: Gun
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1299448615
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1299448614}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.478}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 465386737}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1299448616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1299448614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d7c51846b738cf4b8538271f396574e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 3196500748870248693, guid: a0fa73a054f895743a1e07f13afa483e, type: 3}
-  bulletSpeed: 250
-  fireRate: 0.125
 --- !u!1 &1510485045
 GameObject:
   m_ObjectHideFlags: 0
@@ -1223,6 +1180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1955566620}
   - component: {fileID: 1955566622}
+  - component: {fileID: 1955566623}
   - component: {fileID: 1955566621}
   m_Layer: 5
   m_Name: HealthBar
@@ -1288,6 +1246,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955566619}
   m_CullTransparentMesh: 0
+--- !u!114 &1955566623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955566619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36a1cf75d3c0462d80a55a3b0849d434, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarImage: {fileID: 1955566621}
+  healthBarUpdateDuration: 0.3
 --- !u!1 &2006993000
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,6 +1312,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 465386729, guid: 6b41877905688a9489a31272ca49cc5c, type: 3}
+      propertyPath: health
+      value: 
+      objectReference: {fileID: 465386732}
+    - target: {fileID: 465386729, guid: 6b41877905688a9489a31272ca49cc5c, type: 3}
+      propertyPath: healthComponent
+      value: 
+      objectReference: {fileID: 465386732}
     - target: {fileID: 162388520157436677, guid: 6b41877905688a9489a31272ca49cc5c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1383,10 +1363,6 @@ PrefabInstance:
     - target: {fileID: 162388520157436677, guid: 6b41877905688a9489a31272ca49cc5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 162388520157436678, guid: 6b41877905688a9489a31272ca49cc5c, type: 3}
-      propertyPath: initialHealth
-      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 162388520157436686, guid: 6b41877905688a9489a31272ca49cc5c, type: 3}
       propertyPath: m_Name

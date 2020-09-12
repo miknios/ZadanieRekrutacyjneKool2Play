@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace HealthAndDamage.MonoBehaviour
+namespace HealthAndDamage
 {
 	public class DamageDealer : UnityEngine.MonoBehaviour
 	{

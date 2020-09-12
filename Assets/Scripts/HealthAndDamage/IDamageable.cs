@@ -1,4 +1,4 @@
-﻿namespace HealthAndDamage.MonoBehaviour
+﻿namespace HealthAndDamage
 {
 	public interface IDamageable
 	{

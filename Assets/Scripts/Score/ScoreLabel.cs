@@ -1,17 +1,19 @@
-﻿using DefaultNamespace;
-using TMPro;
+﻿using TMPro;
 using UniRx;
 using UnityEngine;
 using Zenject;
 
-[RequireComponent(typeof(TextMeshProUGUI))]
-public class ScoreLabel : MonoBehaviour
+namespace Score
 {
-	[Inject]
-	public void Initialize(ScoreCounter scoreCounter)
+	[RequireComponent(typeof(TextMeshProUGUI))]
+	public class ScoreLabel : MonoBehaviour
 	{
-		var text = GetComponent<TextMeshProUGUI>();
-		scoreCounter.CurrentScore
-			.Subscribe(score => text.SetText(score.ToString()));
+		[Inject]
+		public void Initialize(ScoreCounter scoreCounter)
+		{
+			var text = GetComponent<TextMeshProUGUI>();
+			scoreCounter.CurrentScore
+				.Subscribe(score => text.SetText(score.ToString()));
+		}
 	}
 }

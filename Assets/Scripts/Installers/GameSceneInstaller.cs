@@ -1,5 +1,6 @@
-﻿using DefaultNamespace;
+﻿using DataProvider.Player;
 using Enemy.TargetFollowing;
+using Score;
 using Zenject;
 
 namespace Installers
@@ -10,6 +11,7 @@ namespace Installers
 		{
 			Container.Bind<IEnemyTargetRegistry>().To<EnemyTargetRegistry>().AsSingle().NonLazy();
 			Container.BindInterfacesAndSelfTo<ScoreCounter>().AsSingle().NonLazy();
+			Container.Bind<PlayerDataProvider>().AsSingle().NonLazy();
 		}
 	}
 }
