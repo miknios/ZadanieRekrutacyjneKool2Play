@@ -14,4 +14,4 @@ namespace Installers
 			Container.Bind<PlayerDataProvider>().AsSingle().NonLazy();
 		}
 	}
-}
+}	
