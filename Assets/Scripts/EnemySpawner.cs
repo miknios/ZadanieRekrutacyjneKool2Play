@@ -2,6 +2,7 @@
 using Enemy.TargetFollowing;
 using ObjectPool;
 using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
@@ -40,6 +41,7 @@ public class EnemySpawner : MonoBehaviour
 		Vector2 randomPointInCircle = Random.insideUnitCircle * maxDistanceFromTarget;
 
 		randomTargetPosition.x += randomPointInCircle.x;
+		randomTargetPosition.y = enemyPrefab.transform.position.y;
 		randomTargetPosition.z += randomPointInCircle.y;
 		return randomTargetPosition;
 	}
