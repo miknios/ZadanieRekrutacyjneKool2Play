@@ -18,7 +18,7 @@ MonoBehaviour:
   speed: 80
   penetrable: 0
   scale: 0.1
-  bulletType: 0
+  bulletType: 1
   material: {fileID: 2100000, guid: e25cfbab42cab194c8351b16b96411d5, type: 2}
   poolPrewarm: 20
   poolIncreaseStep: 1
