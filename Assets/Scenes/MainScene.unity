@@ -337,17 +337,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthLabel: {fileID: 364384515}
---- !u!114 &465386732 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 162388520157436678, guid: 6b41877905688a9489a31272ca49cc5c, type: 3}
-  m_PrefabInstance: {fileID: 162388520234182633}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8cd831cedf891f44a3f55474bfc4ef9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &527167715
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,14 +1301,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 465386729, guid: 6b41877905688a9489a31272ca49cc5c, type: 3}
-      propertyPath: health
-      value: 
-      objectReference: {fileID: 465386732}
-    - target: {fileID: 465386729, guid: 6b41877905688a9489a31272ca49cc5c, type: 3}
-      propertyPath: healthComponent
-      value: 
-      objectReference: {fileID: 465386732}
     - target: {fileID: 162388520157436677, guid: 6b41877905688a9489a31272ca49cc5c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

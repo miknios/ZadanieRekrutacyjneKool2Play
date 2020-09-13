@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e5a88243af54fcda88e7b4fb1e2e8cc, type: 3}
-  m_Name: PrefabPoolsConfig
+  m_Script: {fileID: 11500000, guid: 0e44c0b8838a4849bd8650e05b5bfb6f, type: 3}
+  m_Name: PlayerInitialGunSetup
   m_EditorClassIdentifier: 
-  configs:
-  - prefab: {fileID: 1761718293647316761, guid: 8aab592bdace27a478dd8bb50d50a687, type: 3}
-    prewarm: 10
-    poolIncreaseStep: 10
+  Guns:
+  - {fileID: 11400000, guid: b19b1a74a3ccef64aac1ae9da9edb5d4, type: 2}

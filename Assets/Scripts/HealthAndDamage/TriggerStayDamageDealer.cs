@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace HealthAndDamage
 {
-	public class DamageDealer : UnityEngine.MonoBehaviour
+	public class TriggerStayDamageDealer : MonoBehaviour
 	{
 		private class DamageableCollidedEntry
 		{
@@ -21,6 +21,12 @@ namespace HealthAndDamage
 		[SerializeField] private float damageDealFrequency = 0.5f;
 
 		private IList<DamageableCollidedEntry> damageableCollided = new List<DamageableCollidedEntry>();
+
+		public void RuntimeInit(int damageValue, float damageDealFrequency)
+		{
+			this.damageValue = damageValue;
+			this.damageDealFrequency = damageDealFrequency;
+		}
 
 		private void Update()
 		{

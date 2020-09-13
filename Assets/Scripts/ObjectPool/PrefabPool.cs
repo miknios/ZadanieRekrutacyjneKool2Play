@@ -9,7 +9,7 @@ namespace ObjectPool
 		private readonly Transform _container;
 		private readonly IList<GameObject> _pool;
 		private readonly int _poolIncreaseStep;
-		private HashSet<GameObject> _spawned;
+		private readonly HashSet<GameObject> _spawned;
 		public readonly GameObject Prefab;
 
 		public PrefabPool(GameObject prefab, Transform container = null, int prewarm = 10, int poolIncreaseStep = 5)
@@ -44,7 +44,9 @@ namespace ObjectPool
 			transform.rotation = rotation;
 			transform.SetParent(parent);
 			spawned.SetActive(true);
+			spawned.hideFlags = HideFlags.None;
 
+			_spawned.Add(spawned);
 			_pool.RemoveAt(0);
 
 			return spawned;
