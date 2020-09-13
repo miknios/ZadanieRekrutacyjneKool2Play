@@ -15,14 +15,6 @@ namespace HealthAndDamage
 			{
 				Damageable = damageable;
 			}
-
-			public override bool Equals(object obj)
-			{
-				if (!(obj is DamageableEntry otherEntry))
-					return false;
-
-				return Damageable.Equals(otherEntry.Damageable);
-			}
 		}
 
 		[SerializeField] private int damageValue = 5;
@@ -58,7 +50,7 @@ namespace HealthAndDamage
 
 		private bool AlreadyInEntryCollection(IDamageable damageable)
 		{
-			return _damageableEntries.Any(entry => entry.Damageable.Equals(damageable));
+			return _damageableEntries.Any(entry => entry.Damageable == damageable);
 		}
 
 		private void OnTriggerExit(Collider other)
@@ -66,7 +58,7 @@ namespace HealthAndDamage
 			if (!other.TryGetComponent(out IDamageable damageable))
 				return;
 
-			_damageableEntries.RemoveWhere(entry => entry.Damageable.Equals(damageable));
+			_damageableEntries.RemoveWhere(entry => entry.Damageable == damageable);
 		}
 	}
 }

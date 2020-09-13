@@ -5,19 +5,24 @@ public class Gun : MonoBehaviour
 	private Transform _tip;
 	private BulletSpawner _bulletSpawner;
 	private float fireRate;
-	private float spreadAngle;
+	private float spreadAngleHalf;
 	private float bulletsPerShot;
+	private float timeElapsedSinceLastShot;
 
 	public void Initialize(GunConfig gunConfig)
 	{
 		_tip = transform.GetComponentInChildren<GunTipTag>().transform;
 		_bulletSpawner = new BulletSpawner(gunConfig.bulletConfig, transform);
 		fireRate = gunConfig.fireRate;
-		spreadAngle = gunConfig.spreadAngle;
+		spreadAngleHalf = gunConfig.spreadAngle / 2;
 		bulletsPerShot = gunConfig.bulletsPerShot;
 	}
 
-	
+	private void Update()
+	{
+		timeElapsedSinceLastShot += Time.deltaTime;
+	}
+
 	// TODO: some kind of tween?
 	public void SetActive(bool active)
 	{
@@ -26,6 +31,10 @@ public class Gun : MonoBehaviour
 
 	public void Fire()
 	{
+		if(timeElapsedSinceLastShot < fireRate)
+			return;
+
+		timeElapsedSinceLastShot = 0;
 		for (int i = 0; i < bulletsPerShot; i++)
 		{
 			Vector3 shotDirection = GetDirectionWithinAngle();
@@ -33,9 +42,11 @@ public class Gun : MonoBehaviour
 		}
 	}
 
-	// TODO: use spreadAngle to get random direction
 	private Vector3 GetDirectionWithinAngle()
 	{
-		return transform.forward;
+		float randomAngle = Random.Range(-spreadAngleHalf, spreadAngleHalf);
+		Quaternion rotation = Quaternion.AngleAxis(randomAngle, Vector3.up);
+		
+		return rotation * transform.forward;
 	}
 }

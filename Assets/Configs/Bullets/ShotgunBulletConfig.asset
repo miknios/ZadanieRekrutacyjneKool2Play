@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82a3a21db454432f9d22fbd9171a5b5b, type: 3}
-  m_Name: ProjectileBulletConfig
+  m_Name: ShotgunBulletConfig
   m_EditorClassIdentifier: 
-  damage: 10
-  damageDealFrequency: 0.5
-  range: 50
-  speed: 80
+  damage: 6
+  damageDealFrequency: 0
+  range: 5
+  speed: 0
   penetrable: 0
   scale: 0.1
   bulletType: 1
   material: {fileID: 2100000, guid: e25cfbab42cab194c8351b16b96411d5, type: 2}
-  poolPrewarm: 20
+  poolPrewarm: 40
   poolIncreaseStep: 1

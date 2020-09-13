@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b615fdc8e53a43d280a793726e897b9f, type: 3}
-  m_Name: Pistol
+  m_Name: Shotgun
   m_EditorClassIdentifier: 
-  bulletConfig: {fileID: 11400000, guid: d29133facb3caaf4fabcb7866c4aa54c, type: 2}
-  fireRate: 0.125
-  spreadAngle: 0
-  bulletsPerShot: 1
-  model: {fileID: 7062576339356723254, guid: 7eb1184782ad56a4797464a29a9d145e, type: 3}
+  bulletConfig: {fileID: 11400000, guid: aa99c9d281004754f87cddfb21c0b0d1, type: 2}
+  fireRate: 0.5
+  spreadAngle: 30
+  bulletsPerShot: 5
+  model: {fileID: 3981562137109998904, guid: 50cac3d24c3d25946bb396b9ce2adbed, type: 3}

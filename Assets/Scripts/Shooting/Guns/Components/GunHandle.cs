@@ -19,6 +19,7 @@ public class GunHandle : MonoBehaviour
 		Transform gunTransform = gun.transform;
 		gunTransform.SetParent(transform);
 		gunTransform.localPosition = Vector3.zero;
+		gunTransform.localRotation = Quaternion.identity;
 		gun.SetActive(false);
 		_attachedGuns.Add(gun);
 	}

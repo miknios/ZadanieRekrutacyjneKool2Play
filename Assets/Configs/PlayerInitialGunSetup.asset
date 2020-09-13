@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: PlayerInitialGunSetup
   m_EditorClassIdentifier: 
   Guns:
+  - {fileID: 11400000, guid: 317eb2720fc76dc46994e713b33651dc, type: 2}
   - {fileID: 11400000, guid: b19b1a74a3ccef64aac1ae9da9edb5d4, type: 2}
