@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Create BulletConfig", fileName = "BulletConfig")]
+[CreateAssetMenu(menuName = "Create BulletConfig", fileName = "BulletConfig", order = 0)]
 public class BulletConfig : ScriptableObject
 {
 	public int damage;

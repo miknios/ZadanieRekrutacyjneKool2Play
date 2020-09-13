@@ -11,9 +11,6 @@ public class ProjectileBullet : BulletBase
 	public override void Initialize(BulletConfig bulletConfig)
 	{
 		base.Initialize(bulletConfig);
-		Speed = bulletConfig.speed;
-		DamageDealFrequency = bulletConfig.damageDealFrequency;
-		
 		InitializeRigidbody();
 		InitializeDamageDealer();
 	}
@@ -28,8 +25,8 @@ public class ProjectileBullet : BulletBase
 	// TODO: get callback on damage dealt from damage dealer -> destroy if not penetrable
 	private void InitializeDamageDealer()
 	{
-		TriggerStayDamageDealer damageDealer = gameObject.AddComponent<TriggerStayDamageDealer>();
-		damageDealer.RuntimeInit(Damage, DamageDealFrequency);
+		DamageDealer damageDealer = gameObject.AddComponent<DamageDealer>();
+		damageDealer.Initialize(Damage, DamageDealFrequency);
 	}
 
 	protected override void DoFire(Vector3 direction)
@@ -48,6 +45,12 @@ public class ProjectileBullet : BulletBase
 		_distanceTraveled += moveStepVector.magnitude;
 
 		if (_distanceTraveled >= Range)
+			Destroy();
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if(!Penetrable)
 			Destroy();
 	}
 }

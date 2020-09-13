@@ -6,7 +6,7 @@ public class GunConfig : ScriptableObject
 {
 	public BulletConfig bulletConfig;
 	public float fireRate;
-	[FormerlySerializedAs("spread")] public float spreadAngle;
+	public float spreadAngle;
 	public int bulletsPerShot;
 	public GameObject model;
 }

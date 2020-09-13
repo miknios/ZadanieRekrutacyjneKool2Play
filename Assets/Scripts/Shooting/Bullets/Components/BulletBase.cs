@@ -1,4 +1,5 @@
 ﻿using ObjectPool;
+using UniRx;
 using UnityEngine;
 
 public abstract class BulletBase : MonoBehaviour
@@ -13,8 +14,15 @@ public abstract class BulletBase : MonoBehaviour
 
 	public virtual void Initialize(BulletConfig bulletConfig)
 	{
+		InitializeData(bulletConfig);
+	}
+
+	private void InitializeData(BulletConfig bulletConfig)
+	{
 		Damage = bulletConfig.damage;
 		Range = bulletConfig.range;
+		Speed = bulletConfig.speed;
+		DamageDealFrequency = bulletConfig.damageDealFrequency;
 		Penetrable = bulletConfig.penetrable;
 	}
 
@@ -28,7 +36,10 @@ public abstract class BulletBase : MonoBehaviour
 
 	protected void Destroy()
 	{
-		Debug.Log("Bullet.Destroy()");
-		_prefabPool.Despawn(gameObject);
+		Observable
+			.EveryEndOfFrame()
+			.First()
+			.TakeUntilDisable(gameObject)
+			.Subscribe(_ => _prefabPool.Despawn(gameObject));
 	}
 }

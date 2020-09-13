@@ -8,7 +8,6 @@ public class PlayerGunInitializer : MonoBehaviour
 	private void Awake()
 	{
 		GunHandle gunHandle = GetComponent<GunHandle>();
-		
 		foreach (var gunConfig in playerInitialGunSetup.Guns)
 		{
 			Gun newGun = GunObjectCreator.Create(gunConfig);

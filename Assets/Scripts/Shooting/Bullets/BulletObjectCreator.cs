@@ -11,6 +11,8 @@ public static class BulletObjectCreator
 		return bulletObject;
 	}
 
+	
+	// TODO: cleanup
 	private static void ConfigureConcreteBullet(GameObject bulletObject, BulletConfig config)
 	{
 		switch (config.bulletType)

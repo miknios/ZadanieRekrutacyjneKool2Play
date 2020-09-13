@@ -10,7 +10,6 @@ public class PlayerGunHandleTriggerer : MonoBehaviour
 		// TODO: extract input for config
 		var inputStream = Observable.EveryUpdate()
 			.Where(_ => Input.GetMouseButtonDown(0));
-			//.ThrottleFirst(TimeSpan.FromSeconds(fireRate));
 
 		inputStream.Subscribe(_ => TriggerGunHandle());
 	}

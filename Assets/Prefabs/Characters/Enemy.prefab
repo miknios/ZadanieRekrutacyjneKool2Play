@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 1761718293647316764}
   - component: {fileID: 1761718293647316767}
   - component: {fileID: 1761718293647316766}
-  - component: {fileID: 1761718293647316832}
   - component: {fileID: 1761718293647316833}
   - component: {fileID: 5707856855069179500}
   - component: {fileID: 5300321374113819456}
+  - component: {fileID: 8169502211822481625}
   m_Layer: 10
   m_Name: Enemy
   m_TagString: Untagged
@@ -131,20 +131,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   initialHealth: 100
---- !u!114 &1761718293647316832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1761718293647316761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18774cb856b07444ba203631cb1cf21f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageValue: 5
-  damageDealFrequency: 0.5
 --- !u!114 &1761718293647316833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,3 +170,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _containerSource: 2
+--- !u!114 &8169502211822481625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761718293647316761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18774cb856b07444ba203631cb1cf21f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageValue: 5
+  damageDealFrequency: 0.5

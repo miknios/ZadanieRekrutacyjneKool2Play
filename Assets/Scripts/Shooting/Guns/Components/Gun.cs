@@ -29,8 +29,6 @@ public class Gun : MonoBehaviour
 		for (int i = 0; i < bulletsPerShot; i++)
 		{
 			Vector3 shotDirection = GetDirectionWithinAngle();
-			
-			// TODO: get precise position
 			_bulletSpawner.Spawn(_tip.position, shotDirection);
 		}
 	}
