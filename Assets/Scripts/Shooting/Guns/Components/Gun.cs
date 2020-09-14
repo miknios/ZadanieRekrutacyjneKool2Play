@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class Gun : MonoBehaviour
 	private float spreadAngleHalf;
 	private float bulletsPerShot;
 	private float timeElapsedSinceLastShot;
+	private bool isReady;
+	private Vector3 initialScale;
 
 	public GunConfig Config { get; private set; }
 
@@ -19,6 +22,7 @@ public class Gun : MonoBehaviour
 		fireRate = gunConfig.fireRate;
 		spreadAngleHalf = gunConfig.spreadAngle / 2;
 		bulletsPerShot = gunConfig.bulletsPerShot;
+		initialScale = transform.localScale;
 	}
 
 	private void Update()
@@ -26,10 +30,18 @@ public class Gun : MonoBehaviour
 		timeElapsedSinceLastShot += Time.deltaTime;
 	}
 
-	// TODO: some kind of tween?
 	public void SetActive(bool active)
 	{
 		gameObject.SetActive(active);
+		
+		if (active)
+		{
+			DOTween.Sequence()
+				.Append(transform.DOScale(initialScale * 1.5f, 0.1f).From(Vector3.zero))
+				.Append(transform.DOScale(initialScale, 0.1f))
+				.OnStart(() => isReady = false)
+				.OnComplete(() => isReady = true);
+		}
 	}
 
 	public void Fire()

@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using Enemy.TargetFollowing;
 using ObjectPool;
 using UniRx;
@@ -12,6 +13,7 @@ public class EnemySpawner : MonoBehaviour
 	[SerializeField] private GameObject enemyPrefab = null;
 	[SerializeField] private float spawnFrequency = 1f;
 	[SerializeField] private float maxDistanceFromTarget = 15f;
+	[SerializeField] private float scaleUpTime = 0.3f;
 	
 	private IEnemyTargetRegistry _enemyTargetRegistry;
 	private PrefabPool _enemyPrefabPool;
@@ -32,7 +34,9 @@ public class EnemySpawner : MonoBehaviour
 	private void SpawnEnemy()
 	{
 		Vector3 position = GetRandomPositionNearEnemyTarget();
-		_enemyPrefabPool.Spawn(position, Quaternion.identity);
+		var enemy = _enemyPrefabPool.Spawn(position, Quaternion.identity);
+		enemy.transform
+			.DOScale(1, scaleUpTime);
 	}
 
 	private Vector3 GetRandomPositionNearEnemyTarget()
