@@ -36,7 +36,8 @@ public class EnemySpawner : MonoBehaviour
 		Vector3 position = GetRandomPositionNearEnemyTarget();
 		var enemy = _enemyPrefabPool.Spawn(position, Quaternion.identity);
 		enemy.transform
-			.DOScale(1, scaleUpTime);
+			.DOScale(1, scaleUpTime)
+			.From(0);
 	}
 
 	private Vector3 GetRandomPositionNearEnemyTarget()

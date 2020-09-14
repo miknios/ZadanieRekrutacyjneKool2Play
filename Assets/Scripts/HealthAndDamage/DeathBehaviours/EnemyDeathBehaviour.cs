@@ -7,7 +7,7 @@ namespace HealthAndDamage.DeathBehaviours
 {
 	public class EnemyDeathBehaviour : DeathBehaviour
 	{
-		[SerializeField] private float scaleDownTime = 0.15f;
+		[SerializeField] private float scaleDownTime = 0.2f;
 		
 		private ScoreCounter _scoreCounter;
 		private SourcePool _sourcePool;
@@ -19,7 +19,6 @@ namespace HealthAndDamage.DeathBehaviours
 			_sourcePool = GetComponent<SourcePool>();
 		}
 		
-		// TODO: do some shiny stuff
 		protected override void OnDeath()
 		{
 			transform.DOScale(0f, scaleDownTime)
