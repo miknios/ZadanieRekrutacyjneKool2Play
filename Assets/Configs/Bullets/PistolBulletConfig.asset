@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a3a21db454432f9d22fbd9171a5b5b, type: 3}
   m_Name: PistolBulletConfig
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 5
   damageDealFrequency: 0.5
   range: 200
   speed: 160
