@@ -1,5 +1,5 @@
 ﻿using DataProvider.Player;
-using Enemy.TargetFollowing;
+using Enemy;
 using Score;
 using Zenject;
 

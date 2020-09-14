@@ -1,23 +1,24 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Shooting.Guns.Components;
 using UniRx;
 using UnityEngine;
 
-[RequireComponent(typeof(GunHandle))]
-public class PlayerGunSwitcher : MonoBehaviour
+namespace Shooting
 {
-	private void Awake()
+	[RequireComponent(typeof(WeaponHandle))]
+	public class PlayerGunSwitcher : MonoBehaviour
 	{
-		GunHandle gunHandle = GetComponent<GunHandle>();
+		private void Awake()
+		{
+			WeaponHandle weaponHandle = GetComponent<WeaponHandle>();
 		
-		Observable.EveryUpdate()
-			.Where(_ => Input.GetKeyDown(KeyCode.Q))
-			.Subscribe(_ => gunHandle.ToggleGun());
-	}
+			Observable.EveryUpdate()
+				.Where(_ => Input.GetKeyDown(KeyCode.Q))
+				.Subscribe(_ => weaponHandle.ToggleWeapon());
+		}
 
-	private void SwitchGun()
-	{
+		private void SwitchGun()
+		{
 		
+		}
 	}
 }

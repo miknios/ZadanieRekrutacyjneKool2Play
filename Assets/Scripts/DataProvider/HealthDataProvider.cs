@@ -1,4 +1,4 @@
-﻿using HealthAndDamage.POCO;
+﻿using HealthAndDamage;
 
 namespace DataProvider
 {

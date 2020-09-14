@@ -1,36 +1,33 @@
-﻿using UnityEngine;
+﻿using Shooting.Bullets.Components;
+using UnityEngine;
 
-public static class BulletObjectCreator
+namespace Shooting.Bullets
 {
-	public static GameObject Create(BulletConfig config)
+	public static class BulletObjectCreator
 	{
-		GameObject bulletObject = new GameObject("Bullet");
-		bulletObject.hideFlags = HideFlags.HideInHierarchy;
-		ConfigureConcreteBullet(bulletObject, config);
-
-		return bulletObject;
-	}
-
-	
-	// TODO: cleanup
-	private static void ConfigureConcreteBullet(GameObject bulletObject, BulletConfig config)
-	{
-		switch (config.bulletType)
+		public static GameObject Create(BulletConfig config)
 		{
-			case BulletType.Projectile:
-				bulletObject.AddComponent<ProjectileBullet>();
-				var sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-				sphere.transform.SetParent(bulletObject.transform);
-				sphere.transform.position = Vector3.zero;
-				sphere.transform.localScale = Vector3.one * config.scale;
-				sphere.GetComponent<Renderer>().material = config.material;
-				break;
-			case BulletType.Hitscan:
-				bulletObject.AddComponent<HitscanBullet>();
-				break;
-			default:
-				Debug.LogError("Couldn't find matching bullet component for bullet type.");
-				break;
+			GameObject bulletObject = new GameObject("Bullet");
+			bulletObject.hideFlags = HideFlags.HideInHierarchy;
+			AddConcreteBulletComponent(bulletObject, config.bulletType);
+
+			return bulletObject;
+		}
+
+		private static void AddConcreteBulletComponent(GameObject bulletObject, BulletType bulletType)
+		{
+			switch (bulletType)
+			{
+				case BulletType.Projectile:
+					bulletObject.AddComponent<ProjectileBullet>();
+					break;
+				case BulletType.Hitscan:
+					bulletObject.AddComponent<HitscanBullet>();
+					break;
+				default:
+					Debug.LogError("Couldn't find matching bullet component for bullet type.");
+					break;
+			}
 		}
 	}
 }

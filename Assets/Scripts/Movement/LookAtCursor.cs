@@ -8,11 +8,16 @@ namespace Movement
 		[SerializeField] private new Rigidbody rigidbody = null;
 	
 		private RaycastHit[] raycastHitBuffer = new RaycastHit[1];
-	
+		private Camera _mainCamera;
+
+		private void Awake()
+		{
+			_mainCamera = Camera.main;
+		}
+
 		private void FixedUpdate()
 		{
-			// TODO: change Camera.main to something else
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
 			Physics.RaycastNonAlloc(ray, raycastHitBuffer, float.MaxValue, LayerMask.GROUND);
 			Vector3 target = raycastHitBuffer[0].point;
 			Vector3 position = transform.position;

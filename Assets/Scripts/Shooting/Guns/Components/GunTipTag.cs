@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
-public class GunTipTag : MonoBehaviour
+namespace Shooting.Guns.Components
 {
+	public class GunTipTag : MonoBehaviour
+	{
+	}
 }

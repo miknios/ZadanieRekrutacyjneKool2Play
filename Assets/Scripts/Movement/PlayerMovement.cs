@@ -14,7 +14,6 @@ namespace Movement
 		private Vector3 currentMoveVector;
 		private Vector3 inputAxisVector;
 
-		// TODO: change to be relative to camera rotation
 		private void FixedUpdate()
 		{
 			inputAxisVector.x = Input.GetAxisRaw(HORIZONTAL_AXIS_NAME);

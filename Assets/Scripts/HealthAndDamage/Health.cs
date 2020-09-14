@@ -1,7 +1,7 @@
 ﻿using System;
 using UniRx;
 
-namespace HealthAndDamage.POCO
+namespace HealthAndDamage
 {
 	public interface IHealthData
 	{

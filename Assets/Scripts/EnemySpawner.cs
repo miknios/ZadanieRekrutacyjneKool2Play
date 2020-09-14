@@ -1,6 +1,6 @@
 ﻿using System;
 using DG.Tweening;
-using Enemy.TargetFollowing;
+using Enemy;
 using ObjectPool;
 using UniRx;
 using UniRx.Triggers;
@@ -36,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
 		Vector3 position = GetRandomPositionNearEnemyTarget();
 		var enemy = _enemyPrefabPool.Spawn(position, Quaternion.identity);
 		enemy.transform
-			.DOScale(1, scaleUpTime)
+			.DOScale(enemy.transform.localScale, scaleUpTime)
 			.From(0);
 	}
 

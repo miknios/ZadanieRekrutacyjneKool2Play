@@ -2,7 +2,7 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Enemy.TargetFollowing
+namespace Enemy
 {
 	public interface IEnemyTargetRegistry
 	{

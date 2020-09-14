@@ -1,4 +1,4 @@
-﻿using Enemy.TargetFollowing;
+﻿using Enemy;
 using Zenject;
 
 namespace HealthAndDamage.DeathBehaviours
@@ -13,7 +13,7 @@ namespace HealthAndDamage.DeathBehaviours
 			_enemyTargetRegistry = enemyTargetRegistry;
 		}
 		
-		// TODO: invoke end game and do some shiny stuff
+		// TODO: invoke game over
 		protected override void OnDeath()
 		{
 			_enemyTargetRegistry.Unregister(transform);

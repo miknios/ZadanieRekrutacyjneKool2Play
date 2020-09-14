@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-namespace Enemy.TargetFollowing
+namespace Enemy
 {
 	public class EnemyTarget : MonoBehaviour
 	{
