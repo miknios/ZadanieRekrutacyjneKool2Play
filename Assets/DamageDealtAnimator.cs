@@ -9,10 +9,12 @@ public class DamageDealtAnimator : MonoBehaviour, ISpawnInitializable
 {
 	private HealthComponent _healthComponent;
 	private int _previousValue;
+	private Vector3 initialScale;
 
 	private void Awake()
 	{
 		_healthComponent = GetComponent<HealthComponent>();
+		initialScale = transform.localScale;
 	}
 
 	private void Start()
@@ -29,7 +31,7 @@ public class DamageDealtAnimator : MonoBehaviour, ISpawnInitializable
 	private void Animate()
 	{
 		transform.DOShakeScale(0.1f, 0.6f, 5, 40f)
-			.OnStart(() => transform.localScale = Vector3.one);
+			.OnStart(() => transform.localScale = initialScale);
 	}
 
 	public void InitializeOnSpawn()
