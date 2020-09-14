@@ -5,12 +5,12 @@ public class Gun : MonoBehaviour
 {
 	private Transform _tip;
 	private BulletSpawner _bulletSpawner;
-	private float fireRate;
-	private float spreadAngleHalf;
-	private float bulletsPerShot;
-	private float timeElapsedSinceLastShot;
-	private bool isReady;
-	private Vector3 initialScale;
+	private float _fireRate;
+	private float _spreadAngleHalf;
+	private float _bulletsPerShot;
+	private float _timeElapsedSinceLastShot;
+	private bool _isReady;
+	private Vector3 _initialScale;
 
 	public GunConfig Config { get; private set; }
 
@@ -19,47 +19,66 @@ public class Gun : MonoBehaviour
 		Config = gunConfig;
 		_tip = transform.GetComponentInChildren<GunTipTag>().transform;
 		_bulletSpawner = new BulletSpawner(gunConfig.bulletConfig, transform);
-		fireRate = gunConfig.fireRate;
-		spreadAngleHalf = gunConfig.spreadAngle / 2;
-		bulletsPerShot = gunConfig.bulletsPerShot;
-		initialScale = transform.localScale;
+		_fireRate = gunConfig.fireRate;
+		_spreadAngleHalf = gunConfig.spreadAngle / 2;
+		_bulletsPerShot = gunConfig.bulletsPerShot;
+		_initialScale = transform.localScale;
 	}
 
 	private void Update()
 	{
-		timeElapsedSinceLastShot += Time.deltaTime;
+		_timeElapsedSinceLastShot += Time.deltaTime;
 	}
 
 	public void SetActive(bool active)
 	{
 		gameObject.SetActive(active);
-		
+
+		transform.DOKill();
 		if (active)
 		{
 			DOTween.Sequence()
-				.Append(transform.DOScale(initialScale * 1.5f, 0.1f).From(Vector3.zero))
-				.Append(transform.DOScale(initialScale, 0.1f))
-				.OnStart(() => isReady = false)
-				.OnComplete(() => isReady = true);
+				.Append(transform.DOScale(_initialScale * 1.5f, 0.1f).From(Vector3.zero))
+				.Append(transform.DOScale(_initialScale, 0.1f))
+				.OnStart(() => _isReady = false)
+				.OnComplete(() => _isReady = true);
 		}
 	}
 
 	public void Fire()
 	{
-		if(timeElapsedSinceLastShot < fireRate)
+		if(_timeElapsedSinceLastShot < _fireRate || !_isReady)
 			return;
 
-		timeElapsedSinceLastShot = 0;
-		for (int i = 0; i < bulletsPerShot; i++)
-		{
-			Vector3 shotDirection = GetDirectionWithinAngle();
-			_bulletSpawner.Spawn(_tip.position, shotDirection);
-		}
+		_timeElapsedSinceLastShot = 0;
+		AnimateFire();
+		SpawnBullets();
+	}
+
+	private void AnimateFire()
+	{
+		DOTween.Sequence()
+			.Append(transform.DOLocalMoveZ(0, 0))
+			.Append(transform.DOLocalMoveZ(-0.2f, 0.05f).SetRelative(true))
+			.AppendInterval(_fireRate - 0.05f)
+			.Append(transform.DOLocalMoveZ(0.2f, 0.05f).SetRelative(true));
+	}
+
+	private void SpawnBullets()
+	{
+		for (int i = 0; i < _bulletsPerShot; i++)
+			SpawnBullet();
+	}
+
+	private void SpawnBullet()
+	{
+		Vector3 shotDirection = GetDirectionWithinAngle();
+		_bulletSpawner.Spawn(_tip.position, shotDirection);
 	}
 
 	private Vector3 GetDirectionWithinAngle()
 	{
-		float randomAngle = Random.Range(-spreadAngleHalf, spreadAngleHalf);
+		float randomAngle = Random.Range(-_spreadAngleHalf, _spreadAngleHalf);
 		Quaternion rotation = Quaternion.AngleAxis(randomAngle, Vector3.up);
 		
 		return rotation * transform.forward;
