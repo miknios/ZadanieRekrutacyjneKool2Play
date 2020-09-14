@@ -8,15 +8,22 @@ namespace DefaultNamespace
 		[SerializeField] private float distance = 10;
 		
 		private Vector3 _fromTargetTranslation;
+
+		public void SetNewTarget(Transform newTarget)
+		{
+			targetTransform = newTarget;
+			_fromTargetTranslation = -transform.forward * distance;
+		}
 		
 		private void Start()
 		{
-			_fromTargetTranslation = -transform.forward * distance;
+			SetNewTarget(targetTransform);
 		}
 
 		private void FixedUpdate()
 		{
-			transform.position = targetTransform.position + _fromTargetTranslation;
+			if(targetTransform != null)
+				transform.position = targetTransform.position + _fromTargetTranslation;
 		}
 	}
 }
