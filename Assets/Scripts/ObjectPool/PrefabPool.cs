@@ -29,6 +29,10 @@ namespace ObjectPool
 			{
 				GameObject instantiated = Object.Instantiate(Prefab, _container);
 				instantiated.SetActive(false);
+				if (instantiated.TryGetComponent<SourcePool>(out var sourcePool))
+					sourcePool.PrefabPool = this;
+
+
 				_pool.Add(instantiated);
 			}
 		}
@@ -45,6 +49,10 @@ namespace ObjectPool
 			transform.SetParent(parent);
 			spawned.SetActive(true);
 			spawned.hideFlags = HideFlags.None;
+
+			var initializables = spawned.GetComponentsInChildren<ISpawnInitializable>();
+			foreach (var initializable in initializables)
+				initializable.InitializeOnSpawn();
 
 			_spawned.Add(spawned);
 			_pool.RemoveAt(0);
