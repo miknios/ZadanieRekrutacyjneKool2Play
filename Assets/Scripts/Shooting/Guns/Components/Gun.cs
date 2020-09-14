@@ -9,8 +9,11 @@ public class Gun : MonoBehaviour
 	private float bulletsPerShot;
 	private float timeElapsedSinceLastShot;
 
+	public GunConfig Config { get; private set; }
+
 	public void Initialize(GunConfig gunConfig)
 	{
+		Config = gunConfig;
 		_tip = transform.GetComponentInChildren<GunTipTag>().transform;
 		_bulletSpawner = new BulletSpawner(gunConfig.bulletConfig, transform);
 		fireRate = gunConfig.fireRate;

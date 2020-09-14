@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthComponent: {fileID: 162388520157436678}
+  gunHandle: {fileID: 6036440840717159732}
 --- !u!114 &162388520157436678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +211,7 @@ GameObject:
   - component: {fileID: 6036440840717159732}
   - component: {fileID: 162388520234182635}
   - component: {fileID: 2047281654117905336}
+  - component: {fileID: 1118157665}
   m_Layer: 9
   m_Name: GunHandle
   m_TagString: Untagged
@@ -269,3 +271,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunHandle: {fileID: 6036440840717159732}
+--- !u!114 &1118157665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483675009702381084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43fa76fb7de74af4cba7a39f4889efd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   damageDealFrequency: 0.5
-  range: 50
-  speed: 80
+  range: 200
+  speed: 160
   penetrable: 0
   scale: 0.1
   bulletType: 0
