@@ -1,10 +1,11 @@
 ﻿using HealthAndDamage.POCO;
+using ObjectPool;
 using UniRx;
 using UnityEngine;
 
 namespace HealthAndDamage
 {
-	public class HealthComponent : MonoBehaviour, IDamageable, IHealthData
+	public class HealthComponent : MonoBehaviour, IDamageable, IHealthData, ISpawnInitializable
 	{
 		[SerializeField] private int maxHealth = 100;
 		[SerializeField] private int initialHealth = 100;
@@ -22,6 +23,11 @@ namespace HealthAndDamage
 		public void DealDamage(int value)
 		{
 			_health.DealDamage(value);
+		}
+
+		public void InitializeOnSpawn()
+		{
+			_health.ResetToMax();
 		}
 	}
 }
