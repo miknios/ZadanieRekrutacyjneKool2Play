@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using ObjectPool;
 using UnityEngine;
 
 namespace HealthAndDamage
 {
-	public class DamageDealer : MonoBehaviour
+	public class DamageDealer : MonoBehaviour, ISpawnInitializable
 	{
 		private class DamageableEntry
 		{
@@ -59,6 +60,11 @@ namespace HealthAndDamage
 				return;
 
 			_damageableEntries.RemoveWhere(entry => entry.Damageable == damageable);
+		}
+
+		public void InitializeOnSpawn()
+		{
+			_damageableEntries.Clear();
 		}
 	}
 }
