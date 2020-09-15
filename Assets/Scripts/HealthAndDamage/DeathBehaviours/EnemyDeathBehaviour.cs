@@ -11,6 +11,7 @@ namespace HealthAndDamage.DeathBehaviours
 	{
 		[SerializeField] private float scaleDownTime = 0.2f;
 		[SerializeField] private CinemachineImpulseSource impulseSource;
+		[SerializeField] private ParticleSystem particlePrefab;
 		
 		private ScoreCounter _scoreCounter;
 		private SourcePool _sourcePool;
@@ -33,7 +34,9 @@ namespace HealthAndDamage.DeathBehaviours
 					_sourcePool.PrefabPool.Despawn(gameObject);
 					transform.localScale = initialScale;
 				});
-				
+
+			var particles = Instantiate(particlePrefab);
+			particles.transform.position = transform.position;
 			impulseSource?.GenerateImpulse();
 			_scoreCounter.Increment();
 		}
