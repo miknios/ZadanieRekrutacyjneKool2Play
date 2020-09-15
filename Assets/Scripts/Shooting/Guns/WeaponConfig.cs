@@ -12,5 +12,6 @@ namespace Shooting.Guns
 		public int bulletsPerShot;
 		public GameObject model;
 		public Sprite icon;
+		public float visualImpact;
 	}
 }

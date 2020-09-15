@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthComponent: {fileID: 162388520157436678}
-  gunHandle: {fileID: 6036440840717159732}
+  weaponHandle: {fileID: 6036440840717159732}
 --- !u!114 &162388520157436678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad31964089dd1b5409412851d7f02f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInitialGunSetup: {fileID: 11400000, guid: bffaf047365362749adebf0aeadc7ca8, type: 2}
+  playerInitialWeaponSetup: {fileID: 11400000, guid: bffaf047365362749adebf0aeadc7ca8, type: 2}
 --- !u!114 &2047281654117905336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5e5aec24eeb897469edea2854966dcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunHandle: {fileID: 6036440840717159732}
+  weaponHandle: {fileID: 6036440840717159732}
 --- !u!114 &1118157665
 MonoBehaviour:
   m_ObjectHideFlags: 0
