@@ -9,7 +9,7 @@ namespace Installers
 {
 	public class GameSceneInstaller : MonoInstaller
 	{
-		[SerializeField] private CinemachineFixedSignal defaultFixedSignal;
+		[SerializeField] private CinemachineFixedSignal defaultFixedSignal = null;
 		
 		public override void InstallBindings()
 		{

@@ -214,6 +214,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _renderer: {fileID: 162388520157436675}
   duration: 0.1
+  flashColor: {r: 1, g: 0.97271866, b: 0, a: 1}
+  flashEmmisionColor: {r: 1, g: 0.6112392, b: 0, a: 0}
 --- !u!1 &1483675009702381084
 GameObject:
   m_ObjectHideFlags: 0

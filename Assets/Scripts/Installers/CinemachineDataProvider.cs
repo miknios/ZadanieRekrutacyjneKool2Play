@@ -4,11 +4,11 @@ namespace Installers
 {
 	public class CinemachineDataProvider
 	{
-		public CinemachineFixedSignal CinemachineFixedSignal { get; }
+		public CinemachineFixedSignal DefaultCinemachineFixedSignal { get; }
 		
-		public CinemachineDataProvider(CinemachineFixedSignal cinemachineFixedSignal)
+		public CinemachineDataProvider(CinemachineFixedSignal defaultCinemachineFixedSignal)
 		{
-			CinemachineFixedSignal = cinemachineFixedSignal;
+			DefaultCinemachineFixedSignal = defaultCinemachineFixedSignal;
 		}
 	}
 }

@@ -39,6 +39,7 @@ namespace Shooting.Bullets.Components
 				if(!hit.collider.gameObject.TryGetComponent<IDamageable>(out var damageable))
 					return;
 			
+				
 				damageable.DealDamage(Damage);
 				if (!Penetrable)
 				{

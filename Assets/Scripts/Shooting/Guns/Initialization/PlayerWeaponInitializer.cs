@@ -35,7 +35,7 @@ namespace Shooting.Guns.Initialization
 		private void AddImpulseSource(Weapon weapon, WeaponConfig weaponConfig)
 		{
 			var impulseDef = new CinemachineImpulseDefinition();
-			impulseDef.m_RawSignal = _cinemachineDataProvider.CinemachineFixedSignal;
+			impulseDef.m_RawSignal = _cinemachineDataProvider.DefaultCinemachineFixedSignal;
 			impulseDef.m_AmplitudeGain = weaponConfig.visualImpact;
 			impulseDef.m_FrequencyGain = 7;
 			
