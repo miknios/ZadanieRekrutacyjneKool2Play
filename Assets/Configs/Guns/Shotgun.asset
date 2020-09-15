@@ -18,4 +18,4 @@ MonoBehaviour:
   bulletsPerShot: 7
   model: {fileID: 3981562137109998904, guid: 50cac3d24c3d25946bb396b9ce2adbed, type: 3}
   icon: {fileID: 21300000, guid: e0c35b44407231e47bc08ca6ba72c6c9, type: 3}
-  visualImpact: 0.5
+  visualImpact: 0.35

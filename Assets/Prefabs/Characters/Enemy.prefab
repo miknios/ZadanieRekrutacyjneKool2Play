@@ -213,6 +213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741349bdb6701fa47ae51a368630353f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _renderer: {fileID: 1761718293647316765}
+  duration: 0.1
 --- !u!114 &8245681555576527651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,7 +230,7 @@ MonoBehaviour:
   m_ImpulseDefinition:
     m_ImpulseChannel: 1
     m_RawSignal: {fileID: 11400000, guid: cd4a2adf375f9284b8c7b576e3c509d7, type: 2}
-    m_AmplitudeGain: 0.6
+    m_AmplitudeGain: 0.5
     m_FrequencyGain: 5
     m_RepeatMode: 1
     m_Randomize: 1
