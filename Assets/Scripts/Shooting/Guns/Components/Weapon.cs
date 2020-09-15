@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using Cinemachine;
+using DG.Tweening;
 using Shooting.Bullets;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ namespace Shooting.Guns.Components
 		private float _timeElapsedSinceLastShot;
 		private bool _isReady;
 		private Vector3 _initialScale;
+		private CinemachineImpulseSource _impulseSource;
 
 		public WeaponConfig Config { get; private set; }
 
@@ -26,6 +28,12 @@ namespace Shooting.Guns.Components
 			_spreadAngleHalf = weaponConfig.spreadAngle / 2;
 			_bulletsPerShot = weaponConfig.bulletsPerShot;
 			_initialScale = transform.localScale;
+			
+		}
+
+		public void AddImpulseSource(CinemachineImpulseSource impulseSource)
+		{
+			_impulseSource = impulseSource;
 		}
 
 		private void Update()
@@ -57,6 +65,7 @@ namespace Shooting.Guns.Components
 				return;
 
 			_timeElapsedSinceLastShot = 0;
+			_impulseSource?.GenerateImpulse();
 			AnimateFire();
 			SpawnBullets();
 		}

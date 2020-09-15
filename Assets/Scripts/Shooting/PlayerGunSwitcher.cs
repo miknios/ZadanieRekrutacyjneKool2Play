@@ -15,10 +15,5 @@ namespace Shooting
 				.Where(_ => Input.GetKeyDown(KeyCode.Q))
 				.Subscribe(_ => weaponHandle.ToggleWeapon());
 		}
-
-		private void SwitchGun()
-		{
-		
-		}
 	}
 }

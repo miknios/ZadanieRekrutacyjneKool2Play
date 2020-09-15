@@ -1,14 +1,13 @@
 ﻿using Shooting.Guns.Components;
 using UniRx;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Shooting.Guns
 {
 	public class PlayerWeaponHandleTriggerer : MonoBehaviour
 	{
 		[SerializeField] private WeaponHandle weaponHandle = null;
-	
+
 		private void Start()
 		{
 			var inputStream = Observable.EveryUpdate()

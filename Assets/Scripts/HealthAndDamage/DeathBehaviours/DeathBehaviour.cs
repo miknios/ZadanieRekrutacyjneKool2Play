@@ -18,6 +18,12 @@ namespace HealthAndDamage.DeathBehaviours
 			_healthData.Current
 				.Where(amount => amount == 0)
 				.Subscribe(_ => OnDeath());
+
+			OnStart();
+		}
+
+		protected virtual void OnStart()
+		{
 		}
 
 		protected abstract void OnDeath();

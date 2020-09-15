@@ -3,7 +3,6 @@ using DG.Tweening;
 using Enemy;
 using ObjectPool;
 using UniRx;
-using UniRx.Triggers;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
