@@ -36,8 +36,11 @@ namespace Shooting.Bullets.Components
 			for (int i = 0; i < Mathf.Min(hitCount, HITS_TAB_LENGTH); i++)
 			{
 				RaycastHit hit = _raycastHits[i];
-				if(!hit.collider.gameObject.TryGetComponent<IDamageable>(out var damageable))
+				if (!hit.collider.gameObject.TryGetComponent<IDamageable>(out var damageable))
+				{
+					Destroy();
 					return;
+				}
 			
 				
 				damageable.DealDamage(Damage);
